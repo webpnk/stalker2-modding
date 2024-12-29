@@ -1,0 +1,52 @@
+services:
+    app:
+        build:
+            context: .
+        volumes:
+            - .:/var/www
+        depends_on:
+            - db
+        networks:
+            - stalker2-network
+
+    webserver:
+        image: nginx:alpine
+        ports:
+            - "8008:80"
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+            - .:/var/www
+        networks:
+            - stalker2-network
+        depends_on:
+            - app
+
+    db:
+        image: pgvector/pgvector:pg17
+        container_name: stalker2-postgres
+        environment:
+            POSTGRES_PASSWORD: root
+            POSTGRES_DB: laravel
+            POSTGRES_USER: laravel
+        ports:
+            - "54322:5432"
+        volumes:
+            - dbdata:/var/lib/postgresql/data
+        networks:
+            - stalker2-network
+#
+#    ssr:
+#        build:
+#            context: .
+#        volumes:
+#            - ./:/var/www
+#        command: php artisan inertia:start-ssr
+#        ports:
+#            - "13714:13714"
+#        networks:
+#            - laravel
+volumes:
+    dbdata:
+
+networks:
+    stalker2-network:
