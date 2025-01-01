@@ -18,6 +18,8 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use SolutionForest\FilamentTranslateField\FilamentTranslateFieldPlugin;
+use TomatoPHP\FilamentCms\FilamentCMSPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -32,6 +34,18 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->plugin(ModulesPlugin::make())
+            ->plugin(
+                FilamentCMSPlugin::make()
+                    ->useCategory()
+                    ->usePost()
+                    ->defaultLocales(config('app.available_locales'))
+                    ->allowExport()
+                    ->allowImport()
+            )
+            ->plugin(
+                FilamentTranslateFieldPlugin::make()
+                    ->defaultLocales(config('app.available_locales'))
+            )
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([

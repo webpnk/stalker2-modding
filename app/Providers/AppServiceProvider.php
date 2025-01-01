@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\AI\CohereClient;
+use GuzzleHttp\Client;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
@@ -12,7 +15,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(CohereClient::class, function (Application $app) {
+            return new CohereClient(
+                config('services.cohere.api_url'),
+                config('services.cohere.api_key'),
+                config('services.cohere.trial'),
+                $app->make(Client::class),
+            );
+        });
     }
 
     /**

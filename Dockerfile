@@ -23,6 +23,8 @@ RUN apk add --no-cache \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install gd pdo pdo_pgsql exif zip intl sodium
 
+COPY php.ini /usr/local/etc/php/conf.d/laravel.ini
+
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 

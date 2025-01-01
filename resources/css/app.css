@@ -12,8 +12,7 @@
     body {
         background-color: #0a0a0a;
         color: var(--stalker-text);
-        font-family: 'Courier New', monospace;
-        background-image: url('https://cdn.midjourney.com/b6c911a6-4c2e-47ef-8c59-9364d692ddac/0_0.png');
+        background-image: url('/images/background.webp');
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
@@ -53,5 +52,11 @@
     .stalker-description {
         @apply bg-black/90 p-3 text-sm leading-relaxed border border-[#4a2b23];
         color: #8b8b83;
+    }
+
+    .prose-stalker {
+        h1, h2, h3 {
+            @apply stalker-header;
+        }
     }
 }

@@ -35,4 +35,14 @@ return [
         ],
     ],
 
+    'nexusmod' => [
+        'base_url' => env('NEXUSMOD_API_URL'),
+        'api_key' => env('NEXUSMOD_API_KEY'),
+    ],
+
+    'cohere' => [
+        'api_url' => env('COHERE_API_URL'),
+        'api_key' => env('COHERE_API_KEY'),
+        'trial' => env('COHERE_TRIAL', false),
+    ],
 ];
