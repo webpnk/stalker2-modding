@@ -1,53 +1,50 @@
 import React from 'react';
-import {Mod} from "@/types";
-import { useLaravelReactI18n } from 'laravel-react-i18n';
+import {Post} from "@/types";
 import useFormatDate from "@/utils/useFormat";
 import {InlineIcon} from "@iconify/react";
 import {Link} from "@inertiajs/react";
 import useAppRouter from "@/utils/router";
 
-interface ModCardProps {
-    mod: Mod;
+interface PostCardProps {
+    post: Post;
 }
 
-export const ModCard = ({ mod }: ModCardProps) => {
-    const { t } = useLaravelReactI18n();
+export const PostCard = ({ post }: PostCardProps) => {
     const { route } = useAppRouter();
 
     const dateFormatter = useFormatDate({
         dateStyle: 'medium',
     })
 
+    if (!post.category) {
+        throw new Error('Invalid state!');
+    }
+
     return (
-        <Link href={route('mods.info', mod.id)} className="stalker-item flex flex-col">
+        <Link href={route('blog.post', [post.category.slug, post.slug])} className="stalker-item flex flex-col">
             <div className="relative h-48 mb-4">
                 <img
-                    src={mod.picture_url}
-                    alt={mod.name}
+                    src={post.cover_image}
+                    alt={post.title}
                     className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute top-2 right-2">
                   <span className="px-2 py-1 text-xs rounded bg-[#4a2b23]/90 border border-[#c4a782]">
-                    <InlineIcon icon="lucide:database" className="inline" /> {mod.source}
+                    <InlineIcon icon="lucide:folder" className="inline"/> {post.category.name}
                   </span>
                 </div>
             </div>
 
-            <h3 className="text-xl font-bold text-[#c4a782] mb-2 line-clamp-2">{mod.name}</h3>
-            <p className="text-sm text-[#8b8b83] mb-4 flex-grow line-clamp-4">{mod.summary}</p>
+            <h3 className="text-xl font-bold text-[#c4a782] mb-2 line-clamp-2">{post.title}</h3>
 
             <div className="space-y-2 text-sm text-[#8b8b83]">
                 <div className="flex items-center gap-2">
                     <InlineIcon icon="lucide:user" className="w-4 h-4 inline" />
-                    <span>{mod.author}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <InlineIcon icon="lucide:folder" className="w-4 h-4 inline" />
-                    <span>{t('Minor Improvements')}</span>
+                    <span>stalker2-mods</span>
                 </div>
                 <div className="flex items-center gap-2">
                     <InlineIcon icon="lucide:calendar" className="w-4 h-4 inline" />
-                    <span>{dateFormatter.format(new Date(mod.published_at))}</span>
+                    <span>{dateFormatter.format(new Date(post.published_at))}</span>
                 </div>
             </div>
         </Link>

@@ -6,26 +6,23 @@ import Markdown from "react-markdown";
 import {useLaravelReactI18n} from "laravel-react-i18n";
 import useAppRouter from "@/utils/router";
 import useFormatDate from "@/utils/useFormat";
+import useBreadcrumbs from "@/utils/breadcrumbs";
 
 type BlogPostProps = {
     category: Category,
     post: Post
 }
 
-const useBlogBreadcrumbs = (category: Category, post: Post) => {
-    const { t, currentLocale } = useLaravelReactI18n()
+export default function BlogPost({ category, post }: PageProps<BlogPostProps>) {
+    const { t } = useLaravelReactI18n()
     const { route } = useAppRouter()
 
-    return [
-        { label: t('Home'), href: route('home') },
-        { label: t('Read'), href: '#' },
-        { label: category.name, href: `#` },
+    const breadcrumbs = useBreadcrumbs([
+        { label: t('Read'), href: route('blog.list') },
+        { label: category.name, href: route('blog.list', [category.slug]) },
         { label: post.title, href: route('blog.post', [category.slug, post.slug]) },
-    ];
-}
+    ]);
 
-export default function BlogPost({ category, post }: PageProps<BlogPostProps>) {
-    const breadcrumbs = useBlogBreadcrumbs(category, post);
     const formatDate = useFormatDate({
         dateStyle: 'long',
     });

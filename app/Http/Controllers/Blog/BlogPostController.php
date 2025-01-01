@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Blog;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\PostResource;
 use Inertia\Inertia;
@@ -18,7 +19,7 @@ class BlogPostController extends Controller
             abort(404);
         }
 
-        return Inertia::render('BlogPost', [
+        return Inertia::render('Blog/BlogPost', [
             'category' => new CategoryResource($category),
             'post' => new PostResource($post),
         ]);
