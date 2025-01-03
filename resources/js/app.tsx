@@ -13,7 +13,6 @@ document.addEventListener('inertia:invalid', (e) => {
 })
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
     resolve: (name) =>
         resolvePageComponent(
             `./Pages/${name}.tsx`,

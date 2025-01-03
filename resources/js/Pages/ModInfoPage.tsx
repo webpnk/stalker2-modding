@@ -30,10 +30,12 @@ export default function ModInfoPage({ mod }: PageProps<{ mod: Mod }>) {
         { label: mod.name, href: route('mods.info', [mod.id]) }
     ]);
 
+    const title = `${mod.name} mod for STALKER 2`;
+
     return (
         <>
             <Head>
-                <title>{mod.name} mod for STALKER 2</title>
+                <title>{title}</title>
                 <meta name="description" content={`${mod.name} - ${mod.summary} - Explore the best STALKER 2 mods`} />
             </Head>
 

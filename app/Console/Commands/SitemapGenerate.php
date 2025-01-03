@@ -4,10 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Mod;
 use Illuminate\Console\Command;
-use Illuminate\Database\Eloquent\Builder;
-use Spatie\Crawler\Crawler;
 use Spatie\Sitemap\Sitemap;
-use Spatie\Sitemap\SitemapGenerator;
 use Spatie\Sitemap\Tags\Url;
 use TomatoPHP\FilamentCms\Models\Category;
 use TomatoPHP\FilamentCms\Models\Post;
