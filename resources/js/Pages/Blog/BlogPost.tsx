@@ -7,6 +7,7 @@ import {useLaravelReactI18n} from "laravel-react-i18n";
 import useSsgRouter from "@/lib/inertia-ssg/router";
 import useFormatDate from "@/utils/useFormat";
 import useBreadcrumbs from "@/utils/breadcrumbs";
+import {Head} from "@inertiajs/react";
 
 type BlogPostProps = {
     category: Category,
@@ -29,6 +30,10 @@ export default function BlogPost({ category, post }: PageProps<BlogPostProps>) {
 
     return (
         <>
+            <Head>
+                <title>{post.title}</title>
+                <meta name="description" content={post.seo_description} />
+            </Head>
             <StalkerLayout>
                 <Breadcrumbs items={breadcrumbs} />
 

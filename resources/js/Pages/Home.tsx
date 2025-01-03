@@ -8,6 +8,7 @@ import Link from "@/lib/inertia-ssg/Link";
 import useSsgRouter from "@/lib/inertia-ssg/router";
 import Markdown from "react-markdown";
 import NotebookIcon from "@/Components/Icons/Notebook";
+import {Head} from "@inertiajs/react";
 
 type HomeProps = {
     insights: Record<string, string>;
@@ -28,6 +29,10 @@ export default function Home({ insights, recentPosts: { data: recentPosts }, das
 
     return (
         <>
+            <Head>
+                <title>STALKER 2 Mods, Tools, SDK, Fixes & Heart of Chernobyl Modding Updates</title>
+                <meta name="description" content="Discover the latest STALKER 2 mods, tools, and SDK updates for Heart of Chernobyl. Stay informed about the modding state, tools releases, and fixes to enhance your gameplay. Your go-to hub for STALKER 2 modding!" />
+            </Head>
             <StalkerLayout>
                 <div className="grid md:grid-cols-2 gap-6">
                     <Insights insights={insights} />

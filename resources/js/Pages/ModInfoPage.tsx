@@ -14,6 +14,7 @@ import CalendarIcon from "@/Components/Icons/Calendar";
 import ChevronLeftIcon from "@/Components/Icons/ChevronLeft";
 import ExternalLinkIcon from "@/Components/Icons/ExternalLink";
 import Link from "@/lib/inertia-ssg/Link";
+import {Head} from "@inertiajs/react";
 
 export default function ModInfoPage({ mod }: PageProps<{ mod: Mod }>) {
     const { route } = useSsgRouter();
@@ -30,68 +31,75 @@ export default function ModInfoPage({ mod }: PageProps<{ mod: Mod }>) {
     ]);
 
     return (
-        <StalkerLayout>
-            <Breadcrumbs items={breadcrumbItems} />
+        <>
+            <Head>
+                <title>{mod.name} mod for STALKER 2</title>
+                <meta name="description" content={`${mod.name} - ${mod.summary} - Explore the best STALKER 2 mods`} />
+            </Head>
 
-            <div className="stalker-panel">
-                <h2 className="stalker-header flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                        <PackageIcon className="inline w-5 h-5"/>
-                        {mod.name}
-                    </div>
+            <StalkerLayout>
+                <Breadcrumbs items={breadcrumbItems} />
 
-                    <ModSource source={mod.source} />
-                </h2>
-
-                <div className="p-6 space-y-6">
-                    <div className="relative h-[400px]">
-                        <img
-                            src={mod.picture_url}
-                            alt={mod.name}
-                            className="absolute inset-0 w-full h-full object-cover"
-                        />
-                    </div>
-
-                    <div className="stalker-grid grid-cols-3 gap-4">
-                        <div className="stalker-item cursor-default flex items-center gap-2">
-                            <UserIcon className="w-4 h-4" />
-                            <span>{mod.author}</span>
+                <div className="stalker-panel">
+                    <h2 className="stalker-header flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                            <PackageIcon className="inline w-5 h-5"/>
+                            {mod.name}
                         </div>
-                        <Link href={route('mods.list')} className="stalker-item flex items-center gap-2">
-                            <FolderIcon className="w-4 h-4" />
-                            <span>{t('Minor Improvements')}</span>
-                        </Link>
-                        <div className="stalker-item cursor-default flex items-center gap-2">
-                            <CalendarIcon className="w-4 h-4" />
-                            <span>{formatDate.format(new Date(mod.published_at))}</span>
+
+                        <ModSource source={mod.source} />
+                    </h2>
+
+                    <div className="p-6 space-y-6">
+                        <div className="relative h-[400px]">
+                            <img
+                                src={mod.picture_url}
+                                alt={mod.name}
+                                className="absolute inset-0 w-full h-full object-cover"
+                            />
                         </div>
-                    </div>
 
-                    <div className="stalker-description">
-                        <p>{mod.summary}</p>
-                    </div>
+                        <div className="stalker-grid grid-cols-3 gap-4">
+                            <div className="stalker-item cursor-default flex items-center gap-2">
+                                <UserIcon className="w-4 h-4" />
+                                <span>{mod.author}</span>
+                            </div>
+                            <Link href={route('mods.list')} className="stalker-item flex items-center gap-2">
+                                <FolderIcon className="w-4 h-4" />
+                                <span>{t('Minor Improvements')}</span>
+                            </Link>
+                            <div className="stalker-item cursor-default flex items-center gap-2">
+                                <CalendarIcon className="w-4 h-4" />
+                                <span>{formatDate.format(new Date(mod.published_at))}</span>
+                            </div>
+                        </div>
 
-                    <div className="flex gap-4">
-                        <Link
-                            href={route('mods.list')}
-                            className="inline-flex items-center gap-2 stalker-item px-4 py-2 hover:border-[#c4a782]"
-                        >
-                            <ChevronLeftIcon className="w-4 h-4" />
-                            {t('Back to modifications')}
-                        </Link>
+                        <div className="stalker-description">
+                            <p>{mod.summary}</p>
+                        </div>
 
-                        <a
-                            href={mod.source_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 stalker-item px-4 py-2 hover:border-[#DA8E35] text-[#DA8E35]"
-                        >
-                            <ExternalLinkIcon className="w-4 h-4" />
-                            {t('View on :source', { source: mod.source })}
-                        </a>
+                        <div className="flex gap-4">
+                            <Link
+                                href={route('mods.list')}
+                                className="inline-flex items-center gap-2 stalker-item px-4 py-2 hover:border-[#c4a782]"
+                            >
+                                <ChevronLeftIcon className="w-4 h-4" />
+                                {t('Back to modifications')}
+                            </Link>
+
+                            <a
+                                href={mod.source_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 stalker-item px-4 py-2 hover:border-[#DA8E35] text-[#DA8E35]"
+                            >
+                                <ExternalLinkIcon className="w-4 h-4" />
+                                {t('View on :source', { source: mod.source })}
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </StalkerLayout>
+            </StalkerLayout>
+        </>
     );
 };

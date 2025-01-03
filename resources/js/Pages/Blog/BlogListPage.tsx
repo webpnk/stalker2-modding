@@ -9,6 +9,7 @@ import {Pagination} from "@/Components/Pagination";
 import {PostsGrid} from "@/Components/Blog/PostsGrid";
 import NotebookIcon from "@/Components/Icons/Notebook";
 import Link from "@/lib/inertia-ssg/Link";
+import {Head} from "@inertiajs/react";
 
 type BlogListProps = {
     posts: {
@@ -47,37 +48,44 @@ export default function BlogListPage ({ posts, categories, category }: PageProps
     ]);
 
     return (
-        <StalkerLayout>
-            <Breadcrumbs items={breadcrumbs}/>
+        <>
+            <Head>
+                <title>STALKER 2 Modding Blog - Tips, Guides, Tools, and Updates</title>
+                <meta name="description" content="Stay updated with the latest STALKER 2 modding tips, in-depth guides, tools releases, and news. Explore articles on optimizing gameplay, mod creation, and Heart of Chernobyl updates" />
+            </Head>
 
-            <menu className="stalker-panel flex gap-x-4 items-center px-3 py-2">
-                <span>{t('Categories')}:</span>
-                <ol className="flex items-center space-x-2 text-sm">
-                    {categories.data.map((item) => (
-                        <li className="stalker-item" key={item.id}>
-                            <Link href={route('blog.list', [item.slug])} >
-                                {item.name}
-                            </Link>
-                        </li>
-                    ))}
-                </ol>
-            </menu>
+            <StalkerLayout>
+                <Breadcrumbs items={breadcrumbs}/>
 
-            <div className="stalker-panel">
-                <h2 className="stalker-header flex items-center gap-2">
-                    <NotebookIcon className="w-5 h-5"/>
-                    {
-                        category
-                            ? t('Recent Articles from «:category»', { category: category.name })
-                            : t('Recent Articles')
-                    }
-                </h2>
-                <div className="p-4">
-                    <PostsGrid posts={posts.data}/>
+                <menu className="stalker-panel flex gap-x-4 items-center px-3 py-2">
+                    <span>{t('Categories')}:</span>
+                    <ol className="flex items-center space-x-2 text-sm">
+                        {categories.data.map((item) => (
+                            <li className="stalker-item" key={item.id}>
+                                <Link href={route('blog.list', [item.slug])} >
+                                    {item.name}
+                                </Link>
+                            </li>
+                        ))}
+                    </ol>
+                </menu>
 
-                    <Pagination data={posts}/>
+                <div className="stalker-panel">
+                    <h2 className="stalker-header flex items-center gap-2">
+                        <NotebookIcon className="w-5 h-5"/>
+                        {
+                            category
+                                ? t('Recent Articles from «:category»', { category: category.name })
+                                : t('Recent Articles')
+                        }
+                    </h2>
+                    <div className="p-4">
+                        <PostsGrid posts={posts.data}/>
+
+                        <Pagination data={posts}/>
+                    </div>
                 </div>
-            </div>
-        </StalkerLayout>
+            </StalkerLayout>
+        </>
     );
 };

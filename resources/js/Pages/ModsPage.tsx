@@ -8,6 +8,7 @@ import { useLaravelReactI18n } from 'laravel-react-i18n';
 import {Mod, PageProps} from "@/types";
 import {Pagination} from "@/Components/Pagination";
 import PackageIcon from "@/Components/Icons/PackageIcon";
+import {Head} from "@inertiajs/react";
 
 type ModsListProps = {
     mods: {
@@ -40,20 +41,26 @@ export default function ModsPage ({ mods }: PageProps<ModsListProps>) {
     ]);
 
     return (
-        <StalkerLayout>
-            <Breadcrumbs items={breadcrumbItems} />
+        <>
+            <Head>
+                <title>STALKER 2 Mods List - Weight, Optimizer, Longer Sprint, Inventory & Fixes</title>
+                <meta name="description" content="Explore the best STALKER 2 mods, including weight adjustments, inventory enhancements, longer sprint, optimizer tools, longer days, and essential fixes. Find the perfect mod to elevate your Heart of Chernobyl experience" />
+            </Head>
+            <StalkerLayout>
+                <Breadcrumbs items={breadcrumbItems} />
 
-            <div className="stalker-panel">
-                <h2 className="stalker-header flex items-center gap-2">
-                    <PackageIcon className="w-5 h-5"/>
-                    {t('Available Modifications')}
-                </h2>
-                <div className="p-4">
-                    <ModsGrid mods={mods.data} />
+                <div className="stalker-panel">
+                    <h2 className="stalker-header flex items-center gap-2">
+                        <PackageIcon className="w-5 h-5"/>
+                        {t('Available Modifications')}
+                    </h2>
+                    <div className="p-4">
+                        <ModsGrid mods={mods.data} />
 
-                    <Pagination data={mods} />
+                        <Pagination data={mods} />
+                    </div>
                 </div>
-            </div>
-        </StalkerLayout>
+            </StalkerLayout>
+        </>
     );
 };
