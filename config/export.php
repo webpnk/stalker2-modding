@@ -66,7 +66,8 @@ return [
      * You can skip these by adding a `--skip-{name}` flag to the command.
      */
     'after' => [
-//         'replace' => 'npm run post-export -- http://localhost:8008 https://stalker2mods.pages.dev',
+//      'replace' => 'npm run post-export -- http://localhost:8008 https://stalker2mods.pages.dev',
+        'cleanup' => 'rm -rf dist/css/filament dist/js/filament hot',
     ],
 
 ];
