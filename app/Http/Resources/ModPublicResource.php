@@ -6,6 +6,7 @@ namespace App\Http\Resources;
 
 use App\Models\Mod;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 /**
  * @mixin Mod
@@ -18,9 +19,8 @@ class ModPublicResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'summary' => $this->summary,
-            'description' => $this->description,
+            'name' => str($this->name)->stripTags()->replace('"', '“'),
+            'summary' => str($this->summary)->stripTags()->replace('"', '“'),
             'author' => $this->author,
             'published_at' => $this->published_at,
             'picture_url' => $this->whenLoaded('media',

@@ -9,12 +9,13 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\PostResource;
 use Illuminate\Database\Eloquent\Builder;
 use Inertia\Inertia;
+use MichalOravec\PaginateRoute\PaginateRoute;
 use TomatoPHP\FilamentCms\Models\Category;
 use TomatoPHP\FilamentCms\Models\Post;
 
 class BlogListController extends Controller
 {
-    public function __invoke(?Category $category = null)
+    public function __invoke(PaginateRoute $paginateRoute, ?Category $category = null)
     {
         $posts = Post::query()
             ->with('categories')
@@ -36,6 +37,7 @@ class BlogListController extends Controller
             'posts' => PostResource::collection($posts),
             'categories' => CategoryResource::collection($categories),
             'category' => $category ? new CategoryResource($category) : null,
+            'links' => $paginateRoute->allUrls($posts),
         ]);
     }
 }

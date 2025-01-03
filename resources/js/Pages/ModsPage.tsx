@@ -13,12 +13,6 @@ import {Head} from "@inertiajs/react";
 type ModsListProps = {
     mods: {
         data: Mod[],
-        links: {
-            first: string,
-            last: string,
-            prev: string,
-            next: string,
-        },
         meta: {
             current_page: number,
             from: number,
@@ -29,9 +23,10 @@ type ModsListProps = {
             total: number,
         },
     },
+    links: string[],
 };
 
-export default function ModsPage ({ mods }: PageProps<ModsListProps>) {
+export default function ModsPage ({ mods, links }: PageProps<ModsListProps>) {
     const { route } = useSsgRouter();
     const { t } = useLaravelReactI18n();
 
@@ -57,7 +52,7 @@ export default function ModsPage ({ mods }: PageProps<ModsListProps>) {
                     <div className="p-4">
                         <ModsGrid mods={mods.data} />
 
-                        <Pagination data={mods} />
+                        <Pagination links={links} meta={mods.meta} />
                     </div>
                 </div>
             </StalkerLayout>

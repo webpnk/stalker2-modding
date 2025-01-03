@@ -14,12 +14,6 @@ import {Head} from "@inertiajs/react";
 type BlogListProps = {
     posts: {
         data: Post[],
-        links: {
-            first: string,
-            last: string,
-            prev: string,
-            next: string,
-        },
         meta: {
             current_page: number,
             from: number,
@@ -34,9 +28,10 @@ type BlogListProps = {
         data: Category[],
     },
     category?: Category,
+    links: string[],
 };
 
-export default function BlogListPage ({ posts, categories, category }: PageProps<BlogListProps>) {
+export default function BlogListPage ({ posts, categories, category, links }: PageProps<BlogListProps>) {
     const { route } = useSsgRouter();
     const { t } = useLaravelReactI18n();
 
@@ -82,7 +77,7 @@ export default function BlogListPage ({ posts, categories, category }: PageProps
                     <div className="p-4">
                         <PostsGrid posts={posts.data}/>
 
-                        <Pagination data={posts}/>
+                        <Pagination links={links} meta={posts.meta} />
                     </div>
                 </div>
             </StalkerLayout>
