@@ -4,7 +4,7 @@ import {Breadcrumbs} from "@/Components/Breadcrumbs";
 import {BlogCover} from "@/Components/BlogCover";
 import Markdown from "react-markdown";
 import {useLaravelReactI18n} from "laravel-react-i18n";
-import useAppRouter from "@/utils/router";
+import useSsgRouter from "@/lib/inertia-ssg/router";
 import useFormatDate from "@/utils/useFormat";
 import useBreadcrumbs from "@/utils/breadcrumbs";
 
@@ -15,7 +15,7 @@ type BlogPostProps = {
 
 export default function BlogPost({ category, post }: PageProps<BlogPostProps>) {
     const { t } = useLaravelReactI18n()
-    const { route } = useAppRouter()
+    const { route } = useSsgRouter()
 
     const breadcrumbs = useBreadcrumbs([
         { label: t('Read'), href: route('blog.list') },

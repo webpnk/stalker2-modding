@@ -1,16 +1,18 @@
 import React from 'react';
 import {Post} from "@/types";
 import useFormatDate from "@/utils/useFormat";
-import {InlineIcon} from "@iconify/react";
-import {Link} from "@inertiajs/react";
-import useAppRouter from "@/utils/router";
+import Link from "@/lib/inertia-ssg/Link";
+import useSsgRouter from "@/lib/inertia-ssg/router";
+import FolderIcon from "@/Components/Icons/FolderIcon";
+import UserIcon from "@/Components/Icons/User";
+import CalendarIcon from "@/Components/Icons/Calendar";
 
 interface PostCardProps {
     post: Post;
 }
 
 export const PostCard = ({ post }: PostCardProps) => {
-    const { route } = useAppRouter();
+    const { route } = useSsgRouter();
 
     const dateFormatter = useFormatDate({
         dateStyle: 'medium',
@@ -30,7 +32,7 @@ export const PostCard = ({ post }: PostCardProps) => {
                 />
                 <div className="absolute top-2 right-2">
                   <span className="px-2 py-1 text-xs rounded bg-[#4a2b23]/90 border border-[#c4a782]">
-                    <InlineIcon icon="lucide:folder" className="inline"/> {post.category.name}
+                    <FolderIcon className="inline"/> {post.category.name}
                   </span>
                 </div>
             </div>
@@ -39,11 +41,11 @@ export const PostCard = ({ post }: PostCardProps) => {
 
             <div className="space-y-2 text-sm text-[#8b8b83]">
                 <div className="flex items-center gap-2">
-                    <InlineIcon icon="lucide:user" className="w-4 h-4 inline" />
-                    <span>stalker2-mods</span>
+                    <UserIcon className="w-4 h-4 inline" />
+                    <span>stalker2mods.pro</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <InlineIcon icon="lucide:calendar" className="w-4 h-4 inline" />
+                    <CalendarIcon className="w-4 h-4 inline" />
                     <span>{dateFormatter.format(new Date(post.published_at))}</span>
                 </div>
             </div>

@@ -1,14 +1,14 @@
 import React from 'react';
-import {Icon} from "@iconify/react";
 import StalkerLayout from "@/Layouts/StalkerLayout";
 import {Breadcrumbs} from "@/Components/Breadcrumbs";
 import useBreadcrumbs from "@/utils/breadcrumbs";
-import useAppRouter from '@/utils/router';
+import useSsgRouter from "@/lib/inertia-ssg/router";
 import { useLaravelReactI18n } from 'laravel-react-i18n';
 import {Category, PageProps, Post} from "@/types";
 import {Pagination} from "@/Components/Pagination";
 import {PostsGrid} from "@/Components/Blog/PostsGrid";
-import { Link } from '@inertiajs/react';
+import NotebookIcon from "@/Components/Icons/Notebook";
+import Link from "@/lib/inertia-ssg/Link";
 
 type BlogListProps = {
     posts: {
@@ -36,8 +36,7 @@ type BlogListProps = {
 };
 
 export default function BlogListPage ({ posts, categories, category }: PageProps<BlogListProps>) {
-    console.log(posts, categories, category);
-    const { route } = useAppRouter();
+    const { route } = useSsgRouter();
     const { t } = useLaravelReactI18n();
 
     const breadcrumbs = useBreadcrumbs([
@@ -66,7 +65,7 @@ export default function BlogListPage ({ posts, categories, category }: PageProps
 
             <div className="stalker-panel">
                 <h2 className="stalker-header flex items-center gap-2">
-                    <Icon icon="lucide:notebook" className="w-5 h-5"/>
+                    <NotebookIcon className="w-5 h-5"/>
                     {
                         category
                             ? t('Recent Articles from «:category»', { category: category.name })

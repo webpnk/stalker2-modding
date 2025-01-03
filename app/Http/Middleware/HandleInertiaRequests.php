@@ -52,6 +52,7 @@ class HandleInertiaRequests extends Middleware
                 'name' => config('app.name'),
                 'locales' => config('app.available_locales'),
                 'currentLocale' => App::currentLocale(),
+                'staticMode' => config('app.static_mode'),
             ],
             'localizedUrls' => $localizedUrls,
             'auth' => [

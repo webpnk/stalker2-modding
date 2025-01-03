@@ -1,22 +1,23 @@
 import React from 'react';
-import {Icon, InlineIcon} from "@iconify/react";
 import {useLaravelReactI18n} from "laravel-react-i18n";
 import {Mod} from "@/types";
-import {Link} from "@inertiajs/react";
-import useAppRouter from "@/utils/router";
+import Link from "@/lib/inertia-ssg/Link";
+import useSsgRouter from "@/lib/inertia-ssg/router";
 import {ModSource} from "@/Components/ModSource";
+import PackageIcon from "@/Components/Icons/PackageIcon";
+import ChevronRightIcon from "@/Components/Icons/ChevronRight";
 
 export const ModList = ({ mods }: {mods: Mod[]}) => {
     const {t} = useLaravelReactI18n();
-    const { route } = useAppRouter();
+    const { route } = useSsgRouter();
 
     return (
         <div className="stalker-panel">
             <h2 className="stalker-header flex items-center gap-2">
-                <Icon icon="lucide:package" className="w-5 h-5"/>
+                <PackageIcon className="w-5 h-5"/>
                 {t('Available Modifications')}
             </h2>
-            <div className="stalker-grid grid-cols-1">
+            <div className="stalker-grid border-0 bg-transparent grid-cols-1">
                 {mods.map((mod) => (
                     <Link href={route('mods.info', mod.id)} key={mod.id} className="stalker-item">
                         <div className="flex justify-between items-start">
@@ -31,7 +32,7 @@ export const ModList = ({ mods }: {mods: Mod[]}) => {
 
                 <div className="stalker-item">
                     <Link href={route('mods.list')}>
-                        <InlineIcon icon="lucide:chevron-right" className="inline" /> {t('View All')}
+                        <ChevronRightIcon className="inline" /> {t('View All')}
                     </Link>
                 </div>
             </div>

@@ -14,6 +14,7 @@ export type PageProps<
         name: string;
         locales: string[];
         currentLocale: string;
+        staticMode: boolean;
     };
     localizedUrls: {
         [key: string]: string;

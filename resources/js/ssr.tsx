@@ -4,6 +4,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import ReactDOMServer from 'react-dom/server';
 import { RouteName } from 'ziggy-js';
 import { route } from '../../vendor/tightenco/ziggy';
+import {LaravelReactI18nProvider} from "laravel-react-i18n";
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -27,7 +28,15 @@ createServer((page) =>
                 });
             /* eslint-enable */
 
-            return <App {...props} />;
+            return (
+                <LaravelReactI18nProvider
+                    locale={props.initialPage.props.app.currentLocale}
+                    fallbackLocale={'en'}
+                    files={{}}
+                >
+                    <App {...props} />)
+                </LaravelReactI18nProvider>
+            );
         },
     }),
 );

@@ -1,6 +1,7 @@
 import React from 'react';
-import {Icon} from "@iconify/react";
-import {Link} from "@inertiajs/react";
+import Link from "@/lib/inertia-ssg/Link";
+import ChevronLeftIcon from "@/Components/Icons/ChevronLeft";
+import ChevronRightIcon from "@/Components/Icons/ChevronRight";
 
 interface PaginationProps {
     data: {
@@ -32,7 +33,7 @@ export const Pagination = ({ data }: PaginationProps) => {
                 data-disabled={data.meta.current_page === 1}
                 className="stalker-item p-2 data-[disabled=true]:opacity-50 data-[disabled=true]:cursor-not-allowed"
             >
-                <Icon icon="lucide:chevron-left" className="w-4 h-4" />
+                <ChevronLeftIcon className="w-4 h-4" />
             </Link>
 
             {pages.map(page => (
@@ -52,7 +53,7 @@ export const Pagination = ({ data }: PaginationProps) => {
                 data-disabled={data.meta.current_page === data.meta.last_page}
                 className="stalker-item p-2 data-[disabled=true]:opacity-50 data-[disabled=true]:cursor-not-allowed"
             >
-                <Icon icon="lucide:chevron-right" className="w-4 h-4" />
+                <ChevronRightIcon className="w-4 h-4" />
             </Link>
         </div>
     );

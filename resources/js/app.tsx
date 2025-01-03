@@ -8,6 +8,10 @@ import {LaravelReactI18nProvider} from "laravel-react-i18n";
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
+document.addEventListener('inertia:invalid', (e) => {
+    e.preventDefault();
+})
+
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) =>
@@ -26,8 +30,8 @@ createInertiaApp({
         root.render(
             <LaravelReactI18nProvider
                 locale={props.initialPage.props.app.currentLocale}
-                fallbackLocale={'en'}
-                files={import.meta.glob('/lang/*.json')}
+                fallbackLocale={props.initialPage.props.app.currentLocale}
+                files={{}}
             >
                 <App {...props} />
             </LaravelReactI18nProvider>

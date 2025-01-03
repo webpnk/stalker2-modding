@@ -1,9 +1,9 @@
 import {useLaravelReactI18n} from "laravel-react-i18n";
-import useAppRouter from "@/utils/router";
+import useSsgRouter from "@/lib/inertia-ssg/router";
 
 export default function useBreadcrumbs (items: Array<{ label: string, href: string }>) {
     const { t } = useLaravelReactI18n()
-    const { route } = useAppRouter()
+    const { route } = useSsgRouter()
 
     return [
         { label: t('Home'), href: route('home') },

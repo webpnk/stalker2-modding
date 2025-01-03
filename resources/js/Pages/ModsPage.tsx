@@ -1,13 +1,13 @@
 import React from 'react';
-import {Icon} from "@iconify/react";
 import StalkerLayout from "@/Layouts/StalkerLayout";
 import {ModsGrid} from "@/Components/ModsGrid";
 import {Breadcrumbs} from "@/Components/Breadcrumbs";
 import useBreadcrumbs from "@/utils/breadcrumbs";
-import useAppRouter from '@/utils/router';
+import useSsgRouter from "@/lib/inertia-ssg/router";
 import { useLaravelReactI18n } from 'laravel-react-i18n';
 import {Mod, PageProps} from "@/types";
 import {Pagination} from "@/Components/Pagination";
+import PackageIcon from "@/Components/Icons/PackageIcon";
 
 type ModsListProps = {
     mods: {
@@ -31,7 +31,7 @@ type ModsListProps = {
 };
 
 export default function ModsPage ({ mods }: PageProps<ModsListProps>) {
-    const { route } = useAppRouter();
+    const { route } = useSsgRouter();
     const { t } = useLaravelReactI18n();
 
     const breadcrumbItems = useBreadcrumbs([
@@ -45,7 +45,7 @@ export default function ModsPage ({ mods }: PageProps<ModsListProps>) {
 
             <div className="stalker-panel">
                 <h2 className="stalker-header flex items-center gap-2">
-                    <Icon icon="lucide:package" className="w-5 h-5"/>
+                    <PackageIcon className="w-5 h-5"/>
                     {t('Available Modifications')}
                 </h2>
                 <div className="p-4">

@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\AI\CohereClient;
 use GuzzleHttp\Client;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
@@ -31,5 +32,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Vite::prefetch(concurrency: 3);
+
+        if (config('app.static_mode')) {
+            Vite::createAssetPathsUsing(
+                fn ($path, $secure = null) => URL::assetFrom(config('app.static_asset_url'), $path, true)
+            );
+        }
     }
 }

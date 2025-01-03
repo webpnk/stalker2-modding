@@ -34,17 +34,17 @@ services:
             - dbdata:/var/lib/postgresql/data
         networks:
             - stalker2-network
-#
-#    ssr:
-#        build:
-#            context: .
-#        volumes:
-#            - ./:/var/www
-#        command: php artisan inertia:start-ssr
-#        ports:
-#            - "13714:13714"
-#        networks:
-#            - laravel
+
+    ssr:
+        build:
+            context: .
+        volumes:
+            - ./:/var/www
+        command: php artisan inertia:start-ssr
+        ports:
+            - "13714:13714"
+        networks:
+            - stalker2-network
 volumes:
     dbdata:
 

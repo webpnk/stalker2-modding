@@ -2,9 +2,12 @@ import React from 'react';
 import {Mod} from "@/types";
 import { useLaravelReactI18n } from 'laravel-react-i18n';
 import useFormatDate from "@/utils/useFormat";
-import {InlineIcon} from "@iconify/react";
-import {Link} from "@inertiajs/react";
-import useAppRouter from "@/utils/router";
+import Link from "@/lib/inertia-ssg/Link";
+import DatabaseIcon from "@/Components/Icons/Database";
+import UserIcon from "@/Components/Icons/User";
+import FolderIcon from "@/Components/Icons/FolderIcon";
+import CalendarIcon from "@/Components/Icons/Calendar";
+import useSsgRouter from "@/lib/inertia-ssg/router";
 
 interface ModCardProps {
     mod: Mod;
@@ -12,7 +15,7 @@ interface ModCardProps {
 
 export const ModCard = ({ mod }: ModCardProps) => {
     const { t } = useLaravelReactI18n();
-    const { route } = useAppRouter();
+    const { route } = useSsgRouter();
 
     const dateFormatter = useFormatDate({
         dateStyle: 'medium',
@@ -28,7 +31,7 @@ export const ModCard = ({ mod }: ModCardProps) => {
                 />
                 <div className="absolute top-2 right-2">
                   <span className="px-2 py-1 text-xs rounded bg-[#4a2b23]/90 border border-[#c4a782]">
-                    <InlineIcon icon="lucide:database" className="inline" /> {mod.source}
+                    <DatabaseIcon className="inline" /> {mod.source}
                   </span>
                 </div>
             </div>
@@ -38,15 +41,15 @@ export const ModCard = ({ mod }: ModCardProps) => {
 
             <div className="space-y-2 text-sm text-[#8b8b83]">
                 <div className="flex items-center gap-2">
-                    <InlineIcon icon="lucide:user" className="w-4 h-4 inline" />
+                    <UserIcon className="w-4 h-4 inline" />
                     <span>{mod.author}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <InlineIcon icon="lucide:folder" className="w-4 h-4 inline" />
+                    <FolderIcon className="w-4 h-4 inline" />
                     <span>{t('Minor Improvements')}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <InlineIcon icon="lucide:calendar" className="w-4 h-4 inline" />
+                    <CalendarIcon className="w-4 h-4 inline" />
                     <span>{dateFormatter.format(new Date(mod.published_at))}</span>
                 </div>
             </div>

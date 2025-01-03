@@ -124,4 +124,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'static_mode' => env('STATIC_MODE', false),
+    'static_asset_url' => env('STATIC_ASSET_URL'),
 ];

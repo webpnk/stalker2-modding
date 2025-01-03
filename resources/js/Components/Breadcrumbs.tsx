@@ -1,5 +1,5 @@
 import {Fragment} from "react";
-import {Icon} from "@iconify/react";
+import ChevronRightIcon from "@/Components/Icons/ChevronRight";
 
 interface BreadcrumbItem {
     label: string;
@@ -16,7 +16,7 @@ export const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
             <ol className="flex items-center space-x-2 text-sm">
                 {items.map((item, index) => (
                     <Fragment key={item.label}>
-                        {index > 0 && <Icon icon="lucide:chevron-right" className="w-4 h-4 opacity-50" />}
+                        {index > 0 && <ChevronRightIcon className="w-4 h-4 opacity-50" />}
                         <li>
                             <a
                                 href={item.href}

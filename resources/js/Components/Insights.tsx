@@ -1,7 +1,8 @@
 import React from 'react';
-import {Icon} from "@iconify/react";
 import Markdown from "react-markdown";
 import { useLaravelReactI18n } from 'laravel-react-i18n';
+import TerminalIcon from "@/Components/Icons/Terminal";
+import TriangleAlertIcon from "@/Components/Icons/TriangleAlert";
 
 export const Insights = ({ insights }: { insights: Record<string, string> }) => {
     const { t } = useLaravelReactI18n();
@@ -9,7 +10,7 @@ export const Insights = ({ insights }: { insights: Record<string, string> }) => 
     return (
         <div className="stalker-panel">
             <h2 className="stalker-header flex items-center gap-2">
-                <Icon icon="lucide:terminal" className="w-5 h-5"/>
+                <TerminalIcon className="w-5 h-5"/>
                 {t('Status Report')}
             </h2>
             <div className="stalker-grid border-0 bg-transparent">
@@ -34,7 +35,7 @@ export const Insights = ({ insights }: { insights: Record<string, string> }) => 
 
                 <div className="stalker-description mt-2 self-stretch">
                     <div className="flex items-center gap-2 text-yellow-400 mb-2">
-                        <Icon icon="lucide:triangle-alert" className="w-4 h-4"/>
+                        <TriangleAlertIcon className="w-4 h-4"/>
                         <span className="text-sm">{insights['sdk_phase'] || '-'}</span>
                     </div>
                     <Markdown>{insights['sdk_forecast'] || '-'}</Markdown>

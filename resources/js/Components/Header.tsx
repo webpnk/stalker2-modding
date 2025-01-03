@@ -1,21 +1,22 @@
 import React from 'react';
-import {Icon, InlineIcon} from "@iconify/react";
-import {Link, usePage} from "@inertiajs/react";
+import {usePage} from "@inertiajs/react";
 import {useLaravelReactI18n} from "laravel-react-i18n";
 import {PageProps} from "@/types";
-import LocaleSwitcher from "@/Components/LocaleSwitcher";
-import useAppRouter from "@/utils/router";
+// import LocaleSwitcher from "@/Components/LocaleSwitcher";
+import useSsgRouter from "@/lib/inertia-ssg/router";
+import RadiationIcon from "@/Components/Icons/Radiation";
+import Link from "@/lib/inertia-ssg/Link";
 
 export const Header = () => {
     const page = usePage<PageProps>();
     const { t } = useLaravelReactI18n();
-    const { route } = useAppRouter()
+    const { route } = useSsgRouter()
 
     return (
         <header className="stalker-panel mb-6 flex items-center justify-between">
             <Link href={route('home')} className="flex items-center">
                 <div className="w-16 flex items-center justify-center">
-                    <Icon icon="lucide:radiation" className="w-8 h-8 text-[#98b37c]"/>
+                    <RadiationIcon className="w-8 h-8 text-[#98b37c]"/>
                 </div>
                 <div>
                     <h1 className="text-2xl stalker-header">{page.props.app.name}</h1>
@@ -23,7 +24,7 @@ export const Header = () => {
                 </div>
             </Link>
 
-            <LocaleSwitcher />
+            {/*<LocaleSwitcher />*/}
         </header>
     );
 };

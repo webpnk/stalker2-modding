@@ -37,7 +37,7 @@ class HomeController extends Controller
 
         $latestMods = Mod::query()
             ->orderBy('published_at', 'desc')
-            ->limit(3)
+            ->limit(4)
             ->get();
 
         return Inertia::render('Home', [
