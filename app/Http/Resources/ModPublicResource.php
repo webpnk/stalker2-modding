@@ -28,6 +28,9 @@ class ModPublicResource extends JsonResource
             ),
             'source' => 'NexusMods',
             'source_url' => 'https://www.nexusmods.com/stalker2heartofchornobyl/mods/' . $this->mod_id,
+            'relatedPosts' => $this->whenLoaded('relatedPosts',
+                fn () => PostResource::collection($this->relatedPosts),
+            ),
         ];
     }
 }

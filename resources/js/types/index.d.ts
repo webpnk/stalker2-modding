@@ -55,4 +55,5 @@ export type Mod = {
     picture_url: string;
     source: string;
     source_url: string;
+    relatedPosts?: Post[];
 }

@@ -12,7 +12,7 @@ class ModInfoController extends Controller
 {
     public function __invoke(Mod $mod)
     {
-        $mod->load('media');
+        $mod->load(['media', 'relatedPosts', 'relatedPosts.categories']);
 
         return Inertia::render('ModInfoPage', [
             'mod' => new ModPublicResource($mod),

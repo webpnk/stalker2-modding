@@ -57,5 +57,9 @@
         h1, h2, h3 {
             @apply stalker-header;
         }
+
+        .embedded-video {
+            @apply aspect-video w-full rounded-lg;
+        }
     }
 }

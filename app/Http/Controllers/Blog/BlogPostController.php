@@ -19,9 +19,14 @@ class BlogPostController extends Controller
             abort(404);
         }
 
+        $images = $post
+            ->getMedia('images')
+            ->map->getUrl();
+
         return Inertia::render('Blog/BlogPost', [
             'category' => new CategoryResource($category),
             'post' => new PostResource($post),
+            'images' => config('app.debug') ? $images : [],
         ]);
     }
 }

@@ -61,8 +61,7 @@ class FetchModsFromNexus extends Command
                 'published_at' => $modData['created_time'] ?? now(),
             ]);
 
-            if ($modData['picture_url']) {
-                $mod->clearMediaCollection('picture');
+            if ($modData['picture_url'] && $mod->wasRecentlyCreated) {
                 $mod->addMediaFromUrl($modData['picture_url'])->toMediaCollection('picture');
             }
 

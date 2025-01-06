@@ -12,9 +12,10 @@ import {Head} from "@inertiajs/react";
 type BlogPostProps = {
     category: Category,
     post: Post
+    images: string[]
 }
 
-export default function BlogPost({ category, post }: PageProps<BlogPostProps>) {
+export default function BlogPost({ category, post, images }: PageProps<BlogPostProps>) {
     const { t } = useLaravelReactI18n()
     const { route } = useSsgRouter()
 
@@ -42,6 +43,17 @@ export default function BlogPost({ category, post }: PageProps<BlogPostProps>) {
                     title={post.title}
                     date={formatDate.format(new Date(post.published_at))}
                 />
+
+                {images && (
+                    <div>
+                        {images.map((image, index) => (
+                            <div>
+                                <img key={index} src={image} alt={post.title} className="w-full h-full object-cover"/>
+                                {image}
+                            </div>
+                        ))}
+                    </div>
+                )}
 
                 <article className="stalker-panel stalker-blog-post">
                     {/*<h2 className="stalker-header mb-4">Community Development</h2>*/}

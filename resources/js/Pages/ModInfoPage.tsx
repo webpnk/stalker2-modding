@@ -15,6 +15,7 @@ import ChevronLeftIcon from "@/Components/Icons/ChevronLeft";
 import ExternalLinkIcon from "@/Components/Icons/ExternalLink";
 import Link from "@/lib/inertia-ssg/Link";
 import {Head} from "@inertiajs/react";
+import NotebookIcon from "@/Components/Icons/Notebook";
 
 export default function ModInfoPage({ mod }: PageProps<{ mod: Mod }>) {
     const { route } = useSsgRouter();
@@ -101,6 +102,32 @@ export default function ModInfoPage({ mod }: PageProps<{ mod: Mod }>) {
                         </div>
                     </div>
                 </div>
+
+                {mod.relatedPosts && mod.relatedPosts.length > 0 && (
+                    <div className="stalker-panel">
+                        <h2 className="stalker-header flex items-center gap-2">
+                            <NotebookIcon className="w-5 h-5"/>
+                            {t('Related Articles')}
+                        </h2>
+                        {mod.relatedPosts.map((post) => (
+                            <div className="stalker-grid grid-cols-1" key={post.id}>
+                                <Link href={route("blog.post", [post.category?.slug, post.slug])}
+                                      className="stalker-item">
+                                    <div className="flex justify-between items-start">
+                                        <h3 className="font-bold text-[#c4a782]">{post.title}</h3>
+                                        <span className="text-xs px-2 py-1 rounded bg-[#4a2b23]/50">
+                                        {post.category?.name}
+                                    </span>
+                                    </div>
+                                    <div className="mt-2 text-sm opacity-80">
+                                        <p>{t('Author')}: stalker2mods.pro</p>
+                                        <p className="mt-1 text-[#8b8b83]"></p>
+                                    </div>
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+                )}
             </StalkerLayout>
         </>
     );

@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
+use TomatoPHP\FilamentCms\Models\Post;
 
 /**
  * @property int $id
@@ -48,5 +51,10 @@ class Mod extends Model implements HasMedia
         $this->addMediaConversion('webp')
             ->performOnCollections('picture')
             ->format('webp');
+    }
+
+    public function relatedPosts(): BelongsToMany
+    {
+        return $this->belongsToMany(Post::class, 'mod_related_posts', 'mod_id', 'post_id');
     }
 }
