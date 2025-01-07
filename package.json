@@ -2,7 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "tsc && vite build && vite build --ssr",
+        "build": "APP_ENV=production APP_DEBUG=false tsc && vite build && vite build --ssr",
         "dev": "vite",
         "post-export": "node ./post-export.js"
     },

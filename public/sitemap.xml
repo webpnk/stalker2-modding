@@ -9,11 +9,6 @@
     
             </url>
     <url>
-        <loc>https://stalker2mods.pro/mods/minor-improvements/30</loc>
-        <lastmod>2025-01-01T22:22:52+00:00</lastmod>
-
-            </url>
-    <url>
         <loc>https://stalker2mods.pro/mods/minor-improvements/28</loc>
         <lastmod>2025-01-01T22:28:32+00:00</lastmod>
 
@@ -24,28 +19,53 @@
 
             </url>
     <url>
-        <loc>https://stalker2mods.pro/mods/minor-improvements/31</loc>
-        <lastmod>2025-01-03T15:06:08+00:00</lastmod>
-
-            </url>
-    <url>
-        <loc>https://stalker2mods.pro/mods/minor-improvements/33</loc>
-        <lastmod>2025-01-03T15:06:34+00:00</lastmod>
+        <loc>https://stalker2mods.pro/mods/minor-improvements/30</loc>
+        <lastmod>2025-01-06T13:02:21+00:00</lastmod>
 
             </url>
     <url>
         <loc>https://stalker2mods.pro/mods/minor-improvements/25</loc>
-        <lastmod>2025-01-03T15:05:25+00:00</lastmod>
+        <lastmod>2025-01-06T13:01:25+00:00</lastmod>
 
             </url>
     <url>
         <loc>https://stalker2mods.pro/mods/minor-improvements/29</loc>
-        <lastmod>2025-01-03T15:05:51+00:00</lastmod>
+        <lastmod>2025-01-06T13:01:47+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>https://stalker2mods.pro/mods/minor-improvements/31</loc>
+        <lastmod>2025-01-06T13:01:53+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>https://stalker2mods.pro/mods/minor-improvements/33</loc>
+        <lastmod>2025-01-06T13:02:14+00:00</lastmod>
 
             </url>
     <url>
         <loc>https://stalker2mods.pro/mods/minor-improvements/21</loc>
         <lastmod>2025-01-01T22:27:31+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>https://stalker2mods.pro/mods/minor-improvements/41</loc>
+        <lastmod>2025-01-06T13:00:54+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>https://stalker2mods.pro/mods/minor-improvements/42</loc>
+        <lastmod>2025-01-06T13:01:02+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>https://stalker2mods.pro/mods/minor-improvements/43</loc>
+        <lastmod>2025-01-06T13:01:09+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>https://stalker2mods.pro/mods/minor-improvements/40</loc>
+        <lastmod>2025-01-06T13:00:46+00:00</lastmod>
 
             </url>
     <url>
@@ -69,18 +89,18 @@
 
             </url>
     <url>
-        <loc>https://stalker2mods.pro/mods/minor-improvements/27</loc>
-        <lastmod>2025-01-01T22:28:23+00:00</lastmod>
-
-            </url>
-    <url>
         <loc>https://stalker2mods.pro/mods/minor-improvements/24</loc>
         <lastmod>2025-01-03T15:05:15+00:00</lastmod>
 
             </url>
     <url>
+        <loc>https://stalker2mods.pro/mods/minor-improvements/27</loc>
+        <lastmod>2025-01-06T13:01:32+00:00</lastmod>
+
+            </url>
+    <url>
         <loc>https://stalker2mods.pro/mods/minor-improvements/32</loc>
-        <lastmod>2025-01-03T15:06:25+00:00</lastmod>
+        <lastmod>2025-01-06T13:02:07+00:00</lastmod>
 
             </url>
     <url>
@@ -109,11 +129,30 @@
 
             </url>
     <url>
+        <loc>https://stalker2mods.pro/mods/minor-improvements/39</loc>
+        <lastmod>2025-01-06T13:00:37+00:00</lastmod>
+
+            </url>
+    <url>
         <loc>https://stalker2mods.pro/read</loc>
     
             </url>
     <url>
+        <loc>https://stalker2mods.pro/read/state-of-modding/stalker-2-mod-support-2024</loc>
+        <lastmod>2025-01-01T20:58:09+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>https://stalker2mods.pro/read/modding-tutorials/stalker2-uetools-developer-console-freecamera-debugging</loc>
+        <lastmod>2025-01-06T12:23:42+00:00</lastmod>
+
+            </url>
+    <url>
         <loc>https://stalker2mods.pro/read/state-of-modding</loc>
+    
+            </url>
+    <url>
+        <loc>https://stalker2mods.pro/read/modding-tutorials</loc>
     
             </url>
 </urlset>

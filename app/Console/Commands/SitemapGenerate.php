@@ -56,11 +56,12 @@ class SitemapGenerate extends Command
 
         $posts = Post::query()
             ->with('categories')
-            ->where('is_published', true);
+            ->where('is_published', true)
+            ->get();
 
         foreach ($posts as $post) {
             $sitemap->add(
-                Url::create(route('blog.post', $post->category->slug, $post->slug))
+                Url::create(route('blog.post', [$post->categories->first()->slug, $post->slug]))
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_NEVER)
                     ->setLastModificationDate($post->updated_at)
             );

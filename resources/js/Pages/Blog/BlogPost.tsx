@@ -8,6 +8,7 @@ import useSsgRouter from "@/lib/inertia-ssg/router";
 import useFormatDate from "@/utils/useFormat";
 import useBreadcrumbs from "@/utils/breadcrumbs";
 import {Head} from "@inertiajs/react";
+import rehypeRaw from "rehype-raw";
 
 type BlogPostProps = {
     category: Category,
@@ -56,9 +57,8 @@ export default function BlogPost({ category, post, images }: PageProps<BlogPostP
                 )}
 
                 <article className="stalker-panel stalker-blog-post">
-                    {/*<h2 className="stalker-header mb-4">Community Development</h2>*/}
                     <div className="stalker-description prose prose-stalker max-w-none">
-                        <Markdown>{post.body}</Markdown>
+                        <Markdown rehypePlugins={[rehypeRaw]}>{post.body}</Markdown>
                     </div>
                 </article>
             </StalkerLayout>
