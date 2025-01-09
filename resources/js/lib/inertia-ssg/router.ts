@@ -12,7 +12,7 @@ export default function useSsgRouter() {
 
     const urlLocale = currentLocale() ?? initialLocale;
 
-    const appRoute = (name: string, ...args: any) => zRoute(`${urlLocale}.${name}`, ...args)
+    const appRoute = (name: string, ...args: any) => zRoute(`${urlLocale}.${name}`, ...args) + '/'
 
     return {
         route: appRoute,

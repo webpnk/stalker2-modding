@@ -34,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
     {
         PaginateRoute::registerMacros();
 
+        URL::formatPathUsing(fn ($path) => "$path/");
+
         Vite::prefetch(concurrency: 3);
 
         if (config('app.static_mode')) {

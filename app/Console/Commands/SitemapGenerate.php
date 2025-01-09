@@ -32,10 +32,10 @@ class SitemapGenerate extends Command
     {
         $sitemap = Sitemap::create();
 
-        $sitemap->add(route('home'));
+        $sitemap->add(route('home') . '/');
 
         $sitemap->add(
-            Url::create(route('mods.list'))
+            Url::create(route('mods.list') . '/')
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
         );
 
@@ -43,14 +43,14 @@ class SitemapGenerate extends Command
 
         foreach ($mods as $mod) {
             $sitemap->add(
-                Url::create(route('mods.info', $mod->id))
+                Url::create(route('mods.info', $mod->id) . '/')
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_NEVER)
                     ->setLastModificationDate($mod->updated_at)
             );
         }
 
         $sitemap->add(
-            Url::create(route('blog.list'))
+            Url::create(route('blog.list') . '/')
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
         );
 
@@ -61,7 +61,7 @@ class SitemapGenerate extends Command
 
         foreach ($posts as $post) {
             $sitemap->add(
-                Url::create(route('blog.post', [$post->categories->first()->slug, $post->slug]))
+                Url::create(route('blog.post', [$post->categories->first()->slug, $post->slug]) . '/')
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_NEVER)
                     ->setLastModificationDate($post->updated_at)
             );
@@ -74,7 +74,7 @@ class SitemapGenerate extends Command
 
         foreach ($categories as $category) {
             $sitemap->add(
-                Url::create(route('blog.list', $category->slug))
+                Url::create(route('blog.list', $category->slug) . '/')
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
             );
         }

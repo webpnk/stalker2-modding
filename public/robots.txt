@@ -1,4 +1,8 @@
 User-agent: *
 Disallow: */page/
+Disallow: /parking.php
+Disallow: /parking.php/
+Disallow: /caf
+Disallow: /caf/
 
 Sitemap: https://stalker2mods.pro/sitemap.xml
