@@ -22,7 +22,6 @@ export const Pagination = ({ links, meta }: PaginationProps) => {
             {/* make this link non indexable by google */}
             <Link
                 href={meta.current_page === 1 ? '#' : links[0] + '/'}
-                rel="nofollow"
                 data-disabled={meta.current_page === 1}
                 className="stalker-item p-2 data-[disabled=true]:opacity-50 data-[disabled=true]:cursor-not-allowed"
             >
@@ -32,7 +31,6 @@ export const Pagination = ({ links, meta }: PaginationProps) => {
             {links.map((link, index) => (
                 <Link
                     key={link}
-                    rel="nofollow"
                     href={meta.current_page === index + 1 ? '#' : link + '/'}
                     data-disabled={meta.current_page === index + 1}
                     className={`stalker-item w-8 h-8 flex items-center justify-center data-[disabled=true]:opacity-50 data-[disabled=true]:cursor-not-allowed
@@ -44,7 +42,6 @@ export const Pagination = ({ links, meta }: PaginationProps) => {
 
             <Link
                 href={meta.current_page >= links.length ? '#' : links[links.length - 1] + '/'}
-                rel="nofollow"
                 data-disabled={meta.current_page >= links.length}
                 className="stalker-item p-2 data-[disabled=true]:opacity-50 data-[disabled=true]:cursor-not-allowed"
             >

@@ -6,11 +6,10 @@ import { RouteName } from 'ziggy-js';
 import { route } from '../../vendor/tightenco/ziggy';
 import {LaravelReactI18nProvider} from "laravel-react-i18n";
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
-
 createServer((page) =>
     createInertiaApp({
         page,
+        title: title => title,
         render: ReactDOMServer.renderToString,
         resolve: (name) =>
             resolvePageComponent(

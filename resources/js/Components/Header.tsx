@@ -19,7 +19,7 @@ export const Header = () => {
                     <RadiationIcon className="w-8 h-8 text-[#98b37c]"/>
                 </div>
                 <div>
-                    <h1 className="text-2xl stalker-header">{page.props.app.name}</h1>
+                    <span className="text-2xl stalker-header">{page.props.app.name}</span>
                     <p className="text-sm opacity-70 pl-1">{t('Community Modding Resources & Tools')}</p>
                 </div>
             </Link>

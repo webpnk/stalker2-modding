@@ -37,7 +37,7 @@ export default function ModInfoPage({ mod }: PageProps<{ mod: Mod }>) {
         <>
             <Head>
                 <title>{title}</title>
-                <meta name="description" content={`${mod.name} - ${mod.summary} - Explore the best STALKER 2 mods`} />
+                <meta name="description" content={`${mod.name} mod for STALKER 2 - Explore the best STALKER 2 mods`} />
             </Head>
 
             <StalkerLayout>

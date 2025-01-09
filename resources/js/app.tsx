@@ -6,8 +6,6 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import {LaravelReactI18nProvider} from "laravel-react-i18n";
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
-
 document.addEventListener('inertia:invalid', (e) => {
     e.preventDefault();
 })

@@ -31,7 +31,7 @@ export default function Home({ insights, recentPosts: { data: recentPosts }, das
         <>
             <Head>
                 <title>STALKER 2 Mods, Tools, SDK, Fixes & Heart of Chernobyl Modding Updates</title>
-                <meta name="description" content="Discover the latest STALKER 2 mods, tools, and SDK updates for Heart of Chernobyl. Stay informed about the modding state, tools releases, and fixes to enhance your gameplay. Your go-to hub for STALKER 2 modding!" />
+                <meta name="description" content="Discover the latest STALKER 2 mods, tools, and SDK updates for Heart of Chernobyl. Stay informed about the modding state, tools and patches" />
             </Head>
             <StalkerLayout>
                 <div className="grid md:grid-cols-2 gap-6">
