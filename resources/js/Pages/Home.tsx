@@ -8,7 +8,7 @@ import Link from "@/lib/inertia-ssg/Link";
 import useSsgRouter from "@/lib/inertia-ssg/router";
 import Markdown from "react-markdown";
 import NotebookIcon from "@/Components/Icons/Notebook";
-import {Head} from "@inertiajs/react";
+import {Head, usePage} from "@inertiajs/react";
 
 type HomeProps = {
     insights: Record<string, string>;
@@ -26,11 +26,12 @@ type HomeProps = {
 export default function Home({ insights, recentPosts: { data: recentPosts }, dashboardPosts, latestMods: { data: latestMods } }: PageProps<HomeProps>) {
     const { t } = useLaravelReactI18n()
     const { route } = useSsgRouter()
+    const page = usePage<PageProps>()
 
     return (
         <>
             <Head>
-                <title>STALKER 2 Mods, Tools, SDK, Fixes & Heart of Chernobyl Modding Updates</title>
+                <title>{page.props.app.name}</title>
                 <meta name="description" content="Discover the latest STALKER 2 mods, tools, and SDK updates for Heart of Chernobyl. Stay informed about the modding state, tools and patches" />
             </Head>
             <StalkerLayout>

@@ -45,10 +45,10 @@ export default function ModsPage ({ mods, links }: PageProps<ModsListProps>) {
                 <Breadcrumbs items={breadcrumbItems} />
 
                 <div className="stalker-panel">
-                    <h2 className="stalker-header flex items-center gap-2">
+                    <div className="stalker-header flex items-center gap-2">
                         <PackageIcon className="w-5 h-5"/>
-                        {t('Available Modifications')}
-                    </h2>
+                        <h1>{t('Available Modifications')}</h1>
+                    </div>
                     <div className="p-4">
                         <ModsGrid mods={mods.data} />
 

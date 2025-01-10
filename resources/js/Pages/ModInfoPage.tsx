@@ -44,14 +44,14 @@ export default function ModInfoPage({ mod }: PageProps<{ mod: Mod }>) {
                 <Breadcrumbs items={breadcrumbItems} />
 
                 <div className="stalker-panel">
-                    <h2 className="stalker-header flex items-center justify-between">
+                    <div className="stalker-header flex items-center justify-between">
                         <div className="flex items-center gap-2">
                             <PackageIcon className="inline w-5 h-5"/>
-                            {mod.name}
+                            <h1>{mod.name}</h1>
                         </div>
 
                         <ModSource source={mod.source} />
-                    </h2>
+                    </div>
 
                     <div className="p-6 space-y-6">
                         <div className="relative h-[400px]">

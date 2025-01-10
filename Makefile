@@ -16,3 +16,9 @@ export-prod:
 
 sitemap:
 	docker compose run -e APP_DEBUG=false -e APP_URL=https://stalker2mods.pro -e APP_ENV=production --rm app php artisan sitemap:generate
+
+deploy-dev:
+	make export-dev && npx wrangler pages deploy dist --project-name stalker2mods-dev --commit-dirty
+
+deploy-prod:
+	make export-prod && npx wrangler pages deploy dist --project-name stalker2mods-pro --commit-dirty
