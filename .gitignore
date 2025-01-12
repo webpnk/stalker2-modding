@@ -24,3 +24,4 @@ yarn-error.log
 /.zed
 /lang/php_*.json
 /dist/
+/public/sitemap.xml
