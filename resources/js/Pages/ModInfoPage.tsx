@@ -17,7 +17,7 @@ import Link from "@/lib/inertia-ssg/Link";
 import {Head} from "@inertiajs/react";
 import NotebookIcon from "@/Components/Icons/Notebook";
 
-export default function ModInfoPage({ mod }: PageProps<{ mod: Mod }>) {
+export default function ModInfoPage({ mod, suggestions }: PageProps<{ mod: Mod, suggestions: { data: Mod[]} }>) {
     const { route } = useSsgRouter();
     const { t } = useLaravelReactI18n();
 
@@ -122,6 +122,38 @@ export default function ModInfoPage({ mod }: PageProps<{ mod: Mod }>) {
                                     <div className="mt-2 text-sm opacity-80">
                                         <p>{t('Author')}: stalker2mods.pro</p>
                                         <p className="mt-1 text-[#8b8b83]"></p>
+                                    </div>
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {suggestions && suggestions.data.length > 0 && (
+                    <div className="stalker-panel">
+                        <h2 className="stalker-header flex items-center gap-2">
+                            <PackageIcon className="w-5 h-5"/>
+                            {t('Mods you may also like')}
+                        </h2>
+                        {suggestions.data.map((mod) => (
+                            <div className="stalker-grid grid-cols-1" key={mod.id}>
+                                <Link href={route("mods.info", [mod.id])}
+                                      className="stalker-item">
+                                    <div className="flex justify-between items-start">
+                                        <div className="flex gap-x-4">
+                                            <img src={mod.picture_url} alt={mod.name}
+                                                 className="w-16 h-16 object-cover"/>
+                                            <div className="block">
+                                                <h3 className="font-bold text-[#c4a782]">{mod.name}</h3>
+                                                <div className="mt-2 text-sm opacity-80">
+                                                    <p>{t('Author')}: {mod.author}</p>
+                                                    <p className="mt-1 text-[#8b8b83]"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span className="text-xs px-2 py-1 rounded bg-[#4a2b23]/50">
+                                        {t('Minor Improvements')}
+                                    </span>
                                     </div>
                                 </Link>
                             </div>

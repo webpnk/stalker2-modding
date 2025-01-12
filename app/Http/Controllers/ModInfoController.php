@@ -14,8 +14,11 @@ class ModInfoController extends Controller
     {
         $mod->load(['media', 'relatedPosts', 'relatedPosts.categories']);
 
+        $neighbors = Mod::neighbors($mod->id, 3)->with('media')->get();
+
         return Inertia::render('ModInfoPage', [
             'mod' => new ModPublicResource($mod),
+            'suggestions' => ModPublicResource::collection($neighbors),
         ]);
     }
 }

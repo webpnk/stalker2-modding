@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -56,5 +58,12 @@ class Mod extends Model implements HasMedia
     public function relatedPosts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class, 'mod_related_posts', 'mod_id', 'post_id');
+    }
+
+    public function scopeNeighbors(Builder $query, int $closeToId, int $limit = 3): Builder
+    {
+        return $query
+            ->orderByRaw("(id > ?) desc, id asc", [$closeToId])
+            ->limit($limit);
     }
 }

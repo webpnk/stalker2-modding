@@ -19,6 +19,16 @@ class BlogPostController extends Controller
             abort(404);
         }
 
+        $post->load(['media', 'categories']);
+
+        $neighbors = Post::query()
+            ->with(['media', 'categories'])
+            ->where('is_published', true)
+            ->whereHas('categories', fn ($q) => $q->where('is_active', true))
+            ->orderByRaw("(id > ?) desc, id asc", [$post->id])
+            ->limit(3)
+            ->get();
+
         $images = $post
             ->getMedia('images')
             ->map->getUrl();
@@ -27,6 +37,7 @@ class BlogPostController extends Controller
             'category' => new CategoryResource($category),
             'post' => new PostResource($post),
             'images' => config('app.debug') ? $images : [],
+            'suggestions' => PostResource::collection($neighbors),
         ]);
     }
 }
