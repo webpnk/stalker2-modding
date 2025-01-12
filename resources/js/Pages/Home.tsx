@@ -26,15 +26,23 @@ type HomeProps = {
 export default function Home({ insights, recentPosts: { data: recentPosts }, dashboardPosts, latestMods: { data: latestMods } }: PageProps<HomeProps>) {
     const { t } = useLaravelReactI18n()
     const { route } = useSsgRouter()
-    const page = usePage<PageProps>()
 
     return (
         <>
             <Head>
-                <title>{page.props.app.name}</title>
+                <title>STALKER 2 Mods, Tools, SDK, Fixes & Heart of Chernobyl Modding Updates</title>
                 <meta name="description" content="Discover the latest STALKER 2 mods, tools, and SDK updates for Heart of Chernobyl. Stay informed about the modding state, tools and patches" />
             </Head>
+
             <StalkerLayout>
+                <div className="stalker-panel">
+                    <div className="stalker-description bg-transparent">
+                        <h1 className="text-2xl font-bold text-stalker-rust-400">
+                            STALKER 2 <span className="text-olivine-400">Mods</span>, Tools, SDK, Fixes & <span className="p-1 bg-stalker-rust-900">Heart of Chernobyl</span> Modding Updates
+                        </h1>
+                    </div>
+                </div>
+
                 <div className="grid md:grid-cols-2 gap-6">
                     <Insights insights={insights} />
                     <ModList mods={latestMods} />
