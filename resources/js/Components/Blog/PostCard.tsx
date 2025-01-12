@@ -31,7 +31,7 @@ export const PostCard = ({ post }: PostCardProps) => {
                     className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute top-2 right-2">
-                  <span className="px-2 py-1 text-xs rounded bg-[#4a2b23]/90 border border-[#c4a782]">
+                  <span className="px-2 py-1 text-xs rounded bg-[#4a2b23]/90 border border-[#c4a782] line-clamp-1">
                     <FolderIcon className="inline"/> {post.category.name}
                   </span>
                 </div>

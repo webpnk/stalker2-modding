@@ -61,10 +61,18 @@ export default function Home({ insights, recentPosts: { data: recentPosts }, das
                 </div>
 
                 <div className="stalker-panel">
-                    <h2 className="stalker-header flex items-center gap-2">
-                        <NotebookIcon className="w-5 h-5"/>
-                        {t('Recent Articles')}
-                    </h2>
+                    <div className="stalker-header flex items-center justify-between gap-2">
+                        <div>
+                            <NotebookIcon className="w-5 h-5 inline mr-2"/>
+                            {t('Recent Articles')}
+                        </div>
+
+                        <Link href={route('blog.list')}>
+                            <span className="px-2 py-1 text-xs rounded bg-[#4a2b23]/90 border border-[#c4a782]">
+                                {t('View All')}
+                            </span>
+                        </Link>
+                    </div>
                     {recentPosts.map((post) => (
                         <div className="stalker-grid grid-cols-1" key={post.id}>
                             <Link href={route("blog.post", [post.category?.slug, post.slug])} className="stalker-item">
